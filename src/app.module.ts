@@ -8,8 +8,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { RolesModule } from './roles/roles.module';
-//import { PatientsModule } from './patients/patients.module';
 import { RestaurantsModule } from './restaurants/restaurants.module';
+import { OrdersModule } from './orders/orders.module';
 import config from './config/config';
 import { LoggingInterceptor } from './interceptors/logging.interceptor';
 
@@ -64,6 +64,7 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor';
     AuthModule,
     RolesModule,
     RestaurantsModule,
+    OrdersModule,
   ],
   controllers: [AppController],
   providers: [

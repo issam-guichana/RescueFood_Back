@@ -106,11 +106,26 @@ export class AuthService {
 
     switch (user.role) {
       case UserRole.RESTAURANT:
-        return [{ resource: 'food', actions: ['create', 'read', 'update', 'delete'] }];
+        return [
+          {
+            resource: 'items',
+            actions: ['create', 'read', 'update', 'delete', 'manage'],
+          },
+          {
+            resource: 'restaurants',
+            actions: ['read', 'update'], // Can read and update their own restaurant
+          },
+        ];
       case UserRole.CLIENT:
-        return [{ resource: 'food', actions: ['read'] }];
+        return [
+          { resource: 'items', actions: ['read'] }, // Can view all items
+          { resource: 'orders', actions: ['create', 'read', 'buy'] }, // Can buy items
+        ];
       case UserRole.CHARITY:
-        return [{ resource: 'food', actions: ['read'] }, { resource: 'donation', actions: ['create'] }];
+        return [
+          { resource: 'items', actions: ['read'] }, // Can view all items
+          { resource: 'orders', actions: ['create', 'read', 'buy', 'claim'] }, // Can buy or claim free items
+        ];
       default:
         return [];
     }
